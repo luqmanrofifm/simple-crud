@@ -1,0 +1,15 @@
+server.port=7878
+spring.application.name=simple-crud
+
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/nama_db
+spring.datasource.username=username
+spring.datasource.password=password
+
+spring.jpa.hibernate.ddl-auto=none
+spring.jackson.time-zone=Asia/Jakarta
+spring.jpa.show-sql=false
+
+jwt.auth.secret.key=key_auth
+#jwt.refresh.secret.key=key_refresh
+

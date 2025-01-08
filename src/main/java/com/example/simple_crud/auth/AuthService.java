@@ -1,7 +1,5 @@
 package com.example.simple_crud.auth;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
 import com.example.simple_crud.configurations.JwtConfig;
 import com.example.simple_crud.exceptions.ResourceNotFoundException;
 import com.example.simple_crud.exceptions.UnauthorizedException;
@@ -9,13 +7,11 @@ import com.example.simple_crud.user.User;
 import com.example.simple_crud.user.UserRepository;
 import com.example.simple_crud.utils.JwtUtils;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class AuthService {

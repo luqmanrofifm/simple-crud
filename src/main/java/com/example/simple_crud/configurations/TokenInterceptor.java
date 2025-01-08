@@ -4,19 +4,13 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.simple_crud.constant.CurrentUser;
 import com.example.simple_crud.exceptions.BaseException;
 import com.example.simple_crud.exceptions.UnauthorizedException;
-import com.example.simple_crud.user.UserRepository;
 import com.example.simple_crud.utils.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import java.util.Base64;
-import java.util.Map;
 
 @Component
 public class TokenInterceptor implements HandlerInterceptor {

@@ -1,10 +1,8 @@
 package com.example.simple_crud.auth;
 
-import com.example.simple_crud.common.Response;
 import com.example.simple_crud.common.controller.BaseController;
 import com.example.simple_crud.user.User;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

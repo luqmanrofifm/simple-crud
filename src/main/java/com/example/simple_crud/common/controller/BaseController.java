@@ -20,7 +20,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
 
@@ -71,7 +70,7 @@ public class BaseController {
     public ResponseEntity<Resource> okDownload(String filename, String mediaType, byte[] data) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=\"" + filename + "\"");
-        return ((ResponseEntity.BodyBuilder)ResponseEntity.ok().headers(headers)).contentLength((long)data.length).contentType(MediaType.parseMediaType(mediaType)).body(new ByteArrayResource(data));
+        return ResponseEntity.ok().headers(headers).contentLength(data.length).contentType(MediaType.parseMediaType(mediaType)).body(new ByteArrayResource(data));
     }
 
     public Pageable pageFromRequest(int page, int size, String sort, Boolean asc) {
@@ -79,7 +78,7 @@ public class BaseController {
             sort = "id";
         }
 
-        return PageRequest.of(page, size, Sort.by(new Sort.Order[]{this.getSortBy(sort, asc, true)}));
+        return PageRequest.of(page, size, Sort.by(this.getSortBy(sort, asc, true)));
     }
 
     public Sort.Order getSortBy(String sort, Boolean asc, Boolean ignoreCase) {
@@ -97,7 +96,7 @@ public class BaseController {
         List<Map<String, String>> messages = new ArrayList();
 
         while(var4.hasNext()) {
-            FieldError field = (FieldError)var4.next();
+            FieldError field = var4.next();
             Map<String, String> validatedItem = new HashMap();
             validatedItem.put(field.getField(), StringUtils.capitalize(field.getField()) + " " + field.getDefaultMessage());
             messages.add(validatedItem);
@@ -150,9 +149,9 @@ public class BaseController {
         }
 
         if (ex.getErrorCode() == 400) {
-            return this.badRequest((Object)null, text);
+            return this.badRequest(null, text);
         } else {
-            return ex.getErrorCode() == 404 ? this.notFound((Object)null, text) : this.error(HttpStatus.EXPECTATION_FAILED, text);
+            return ex.getErrorCode() == 404 ? this.notFound(null, text) : this.error(HttpStatus.EXPECTATION_FAILED, text);
         }
     }
 }

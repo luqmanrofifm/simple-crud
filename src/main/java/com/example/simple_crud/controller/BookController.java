@@ -1,17 +1,16 @@
 package com.example.simple_crud.controller;
 
 import com.example.simple_crud.common.controller.BaseController;
+import com.example.simple_crud.entity.Book;
 import com.example.simple_crud.exceptions.BaseException;
 import com.example.simple_crud.requestdto.RequestBookDto;
 import com.example.simple_crud.service.BookService;
-import com.example.simple_crud.entity.Book;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedModel;
-import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

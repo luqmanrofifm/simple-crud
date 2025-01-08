@@ -1,6 +1,12 @@
 package com.example.simple_crud.user;
 
+import java.util.Date;
+import java.util.UUID;
+
+import org.hibernate.annotations.UuidGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,11 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.UuidGenerator;
-import org.hibernate.validator.constraints.Length;
-
-import java.util.Date;
-import java.util.UUID;
 
 @Entity(name = "users")
 @Getter
@@ -27,7 +28,6 @@ public class User {
     @NotNull
     private Date createdDate;
     private Date updatedDate;
-    @NotNull
     private String createdBy;
     private String updatedBy;
 
